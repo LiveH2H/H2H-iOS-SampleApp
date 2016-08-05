@@ -1,0 +1,6 @@
+framework module TutorWebRTC {
+  umbrella header "TutorWebRTC.h"
+
+  export *
+  module * { export * }
+}

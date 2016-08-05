@@ -1,0 +1,10 @@
+framework module H2HSDK {
+  umbrella header "H2HSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module H2HSDK.Swift {
+    header "H2HSDK-Swift.h"
+}

@@ -1,0 +1,91 @@
+/*!
+
+\mainpage TutorWebRTC Introduction
+
+
+\section sec_usage Usage for group call
+
+
+\subsection step1 Step 1: Initialization
+Create an object of RTCMulticastSessionManager and initialize it with the signaling server's (App server's) URL.
+\note This framework does not support BITCODE yet. iOS Simulator is also not supported.
+
+\code{.m}
+RTCMulticastSessionManager *multicastSessionManager = [[RTCMulticastSessionManager alloc] initWithServerURL:[NSURL URLWithString:@"wss://172.24.12.114:4040/groupcall"]];
+\endcode
+
+
+\subsection step2 Step 2: Connect
+Connect to the signaling server.
+
+\code{.m}
+[multicastSessionManager connect];
+\endcode
+
+
+\subsection step3 Step 3: Join a room
+Once the connection to the signaling server has been established, the 'connectionState' property of the RTCMulticastSessionManager instance will change to \link RTCConnectionStateConnected \endlink. The \link RTCNotificationConnectionStateChanged \endlink notification will be posted to indicate the changes in state of this property. Now that the connection to the signaling server is established, we can begin communication. Send a request to join a room.
+\note All notifications will be posted on a background thread. If the UI needs to be updated, an explicit main queue dispatch will be required.
+
+\code{.m}
+[multicastSessionManager joinRoom: @"room10" withUserName: @"user128"];
+\endcode
+
+
+\subsection step4 Step 4: Detecting room changes
+1. Once the room is joined the 'multicastRoomState' property of the RTCMulticastSessionManager instance will change to \link RTCMulticastRoomStateJoined \endlink. The \link RTCNotificationMulticastRoomStateChanged \endlink notification will be posted to indicate the changes in state of this property.
+2. To indicate changes in the 'users' list of the 'room' property, \link RTCNotificationRoomUsersChanged \endlink notification is posted.
+\note In future versions an array of RTCUser instances will be passed along with the notification and will have a clear indication of whether they 'left' the room or 'joined' it.
+
+
+\subsection step5 Step 5: Detecting changes in media streams
+When the media stream (RTCStream) of any user changes the \link RTCNotificationUserStreamChanged \endlink notification will be posted. The object contained in the notification payload will be the user for which the media stream has changed.
+
+
+\subsection step6 Step 6: Rendering the video track of any user (local or remote) in the room
+To render the video track for any user, we require an instance of the RTCVideoView class. This instance can be created programmatically OR can be instantiated through the storyboard using IB. Add this instance to the rendering queue of the video track embedded in the stream (RTCStream) of the user (RTCUser).
+
+\code{.m}
+[user.stream.videoTracks.lastObject addRenderer: videoView];
+\endcode
+
+
+\subsection step7 Step 7: Remove rendering of the video track of a user (local or remote) in the room
+To remove the RTCVideoView instance from the rendering queue of the video track embedded in the stream (RTCStream) of the user (RTCUser), do the following.
+
+\code{.m}
+[user.stream.videoTracks.lastObject removeRenderer: videoView];
+\endcode
+
+
+\subsection step8 Step 8: Enabling or Disabling the audio/video track of a user
+To enable or disable an audio/video track of a user use the 'setEnabled:error:' selector for that particular track, which is derived from the RTCDataTrack class.
+
+\code{.m}
+RTCAudioDataTrack *audioTrack = user.stream.audioTracks.lastObject;
+
+NSError *error;
+
+if ([audioTrack setEnabled:!audioTrack.isEnabled error:&error] == false) {
+
+    NSLog(error);
+}
+\endcode
+
+
+\subsection step9 Step 9: Leave the room
+Invoke the 'leaveRoom' function to leave the room.
+
+\code{.m}
+[multicastSessionManager leaveRoom: multicastSessionManager.room];
+\endcode
+
+
+\subsection step10 Step 10: Disconnect
+Once the group call has ended, disconnect the signaling connection to the server (if no longer needed).
+
+\code{.m}
+[multicastSessionManager disconnect];
+\endcode
+
+*/

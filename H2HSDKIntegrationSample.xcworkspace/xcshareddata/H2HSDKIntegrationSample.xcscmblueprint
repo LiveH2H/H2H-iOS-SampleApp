@@ -1,0 +1,25 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "bfc1341f-7cdf-4ee7-97e2-0faa88d737f7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+    "bfc1341f-7cdf-4ee7-97e2-0faa88d737f7" : {
+
+    }
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "bfc1341f-7cdf-4ee7-97e2-0faa88d737f7" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "92E35248-D873-44CC-B767-4A7FF0D62883",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "bfc1341f-7cdf-4ee7-97e2-0faa88d737f7" : "ASRCore\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "H2HSDKIntegrationSample",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Code\/dev\/iOSSampleApp\/SampleWithAllOptions\/H2HSDKIntegrationSample\/H2HSDKIntegrationSample.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "http:\/\/svn.sct.lan\/svn\/ASRCore",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "bfc1341f-7cdf-4ee7-97e2-0faa88d737f7"
+    }
+  ]
+}
