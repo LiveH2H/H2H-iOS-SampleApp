@@ -10,11 +10,11 @@ import UIKit
 import H2HSDK
 
 // server base URL
-//let H2HServerURL = "http://52.53.238.68:8080/tutormeetweb/"
-let H2HServerURL = "https://h2hqa.liveh2h.com/tutormeetweb/"
+let H2HServerURL = "http://52.53.238.68:8080/tutormeetweb/"
+
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, NSURLSessionDelegate {
 
     var window: UIWindow?
 
@@ -55,5 +55,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         H2HSDKExt.sharedInstance().applicationWillTerminate(application)
     }
+    
+    func getURLSession() -> NSURLSession {
+        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration();
+        let session = NSURLSession(configuration: configuration, delegate: self, delegateQueue:NSOperationQueue.mainQueue())
+        return session;
+    }
+    
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust{
+            let credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
+            completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential,credential);
+        }
+    }
+    
+    func URLSession(session: NSURLSession, didReceiveChallenge challenge: NSURLAuthenticationChallenge, completionHandler: (NSURLSessionAuthChallengeDisposition, NSURLCredential?) -> Void) {
+        if challenge.protectionSpace.authenticationMethod == NSURLAuthenticationMethodServerTrust{
+            let credential = NSURLCredential(forTrust: challenge.protectionSpace.serverTrust!)
+            completionHandler(NSURLSessionAuthChallengeDisposition.UseCredential,credential);
+        }
+    }
+    
 }
 

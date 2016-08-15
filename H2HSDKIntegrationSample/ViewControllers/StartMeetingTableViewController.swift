@@ -318,8 +318,8 @@ class StartMeetingTableViewController : UITableViewController, SelectedStringDel
         request.setValue("application/x-www-form-urlencoded; charset=utf-8", forHTTPHeaderField: "Content-Type")
         request.setValue(NSString(format:"%llu", httpBody!.length) as String, forHTTPHeaderField: "Content-Length")
 
-        let postDataTask = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) in
-            
+        //let postDataTask = NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) in
+        let postDataTask = ((UIApplication.sharedApplication().delegate) as! AppDelegate!).getURLSession().dataTaskWithRequest(request, completionHandler: { (data, response, error) in
             do
             {
                 if let dataUnrapped = data
