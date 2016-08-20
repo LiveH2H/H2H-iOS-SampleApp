@@ -1,57 +1,27 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
-{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;\red11\green85\blue25;\red196\green26\blue22;\red100\green56\blue32;
-}
-\paperw11905\paperh16837\margl1440\margr1440\vieww27300\viewh21820\viewkind0
-\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+Use Xcode 7.3 or earlier.
 
-\f0\fs28 \cf0 Use Xcode 7.3 or later. \
-\
-1. In your project\'92s folder copy  \
+* In your project’s folder copy
+a. H2HBundle.bundle, b. TutorWebTC.framework, c. H2HSDK.framework. provided in FrameworksAndResources folder.
 
-\b a. H2HBundle.bundle, \
-b. TutorWebTC.framework, \
-c. H2HSDK.framework. 
-\b0 \
-provided in FrameworksAndResources folder.\
-\
-2. From Project File -> General -> Embedded Binaries -> +  -> Add Other (select these files: H2HBundle.bundle, TutorWebTC.framework, H2HSDK.framework from the project directory.) -> Select: copy items if needed -> Finish.\
-Make sure these files are added under:\
-\
+* From Project File -> General -> Embedded Binaries -> + -> Add Other (select these files: H2HBundle.bundle, TutorWebTC.framework, H2HSDK.framework from the project directory.) -> Select: copy items if needed -> Finish. Make sure these files are added under:
 
-\b Embedded Binaries: 
-\b0 (General tab)\
-H2HBundle.bundle, \
-TutorWebTC.framework, \
-H2HSDK.framework. \
-\
-and 
-\b Linked Frameworks and Libraries: 
-\b0 (General tab)\
-TutorWebTC.framework\
-H2HSDK.framework. \
-\
-3.  Project File -> Build Phases -> Copy Bundle Resources -> + (if not present) -> H2HBundle.bundle\
-4.  Project File -> Build Settings -> Build Options -> Enable Bitcode -> NO\
-5. Create Podfile and add following statements:\
-		platform :ios, \'917.1\'92\
-\
-		target \'91<Target Name>\'92 do\
-\
- 		pod 'KissXML'\
-  		pod  'CocoaAsyncSocket'\
-  		pod 'CocoaLumberjack\'92, \'912.2.0\'92\
-\
-		end\
-\
-and perform pod install. \
-(for more information on how to install pods, refer: https://cocoapods.org/\cf2 \expnd0\expndtw0\kerning0
-)\cf0 \kerning1\expnd0\expndtw0 \
-close project file and open workspace created by pods. \
-\
-6. Unzip and copy XMPPFramework (provided in FrameworksAndResources folder) in your project folder.\
-Add it in frameworks folder in your project. ( select Frameworks -> Add files to <Project Name> -> select XMPPFramework we just copied ) \
-7. Add Project file -> Build Phases -> Link Binary with Libraries -> + -> libresolv.tbd \
-8. In H2HSDK.framework -> Headers -> H2HSDK.h:\cf3 \CocoaLigature0  \cf0 \CocoaLigature1 add line \cf4 \CocoaLigature0 #import \cf3 "H2HSDKExt.h" \cf0 \CocoaLigature1 (if not already present)\cf3 \CocoaLigature0 \
-\cf0 \CocoaLigature1 9. Clean and Build your project.\
-}
+Embedded Binaries: (General tab) H2HBundle.bundle, TutorWebTC.framework, H2HSDK.framework.
+
+and Linked Frameworks and Libraries: (General tab) TutorWebTC.framework H2HSDK.framework.
+
+* Project File -> Build Phases -> Copy Bundle Resources -> + (if not present) -> H2HBundle.bundle
+* Project File -> Build Settings -> Build Options -> Enable Bitcode -> NO
+* Create Podfile and add following statements: platform :ios, ‘7.1’
+
+target ‘<Target Name>’ do
+
+  pod 'KissXML'
+  pod  'CocoaAsyncSocket'
+  pod 'CocoaLumberjack’, ‘2.2.0’
+end
+and perform pod install. (for more information on how to install pods, refer: https://cocoapods.org/) close project file and open workspace created by pods.
+
+* Unzip and copy XMPPFramework (provided in FrameworksAndResources folder) in your project folder. Add it in frameworks folder in your project. ( select Frameworks -> Add files to -> select XMPPFramework we just copied )
+* Add Project file -> Build Phases -> Link Binary with Libraries -> + -> libresolv.tbd
+* In H2HSDK.framework -> Headers -> H2HSDK.h: add line #import "H2HSDKExt.h" (if not already present)
+* Clean and Build your project.
