@@ -64,3 +64,28 @@ Step 8.
 Step 9.
 
   Clean and Build your project.
+
+
+
+Meeting Room Customization:
+
+Please use parameter "customizationDictionary" from H2H SDK's joinMeetingWithToken method to customize the meeting room. Here is the example of customization dictionary:
+
+NSDictionary *customizationDictionary = @{kCustomizationHideTranscript:@YES,
+                                          kCustomizationHideTranslator:@YES,
+                                                kCustomizationLanguage:kCustomLanguageChinese,
+                                               kCustomizationLogoImage:[UIImage imageNamed:@"MyCompanyLogo"],
+                                   kCustomizationUseFabricJSWhiteboard:@YES,
+                                      kCustomizationUseAttendeeIdForWB:@YES,
+                                  kCustomizationHideInviteUsersByEmail:@YES,
+                                    kCustomizationHideParticipantsIcon:@YES};
+
+Customization keys:
+kCustomizationHideTranscript - BOOL - show/hide meeting transcript;
+kCustomizationHideTranslator - BOOL - enable/disable meeting translator;
+kCustomizationHideTranslator - NSString - default meeting room UI language (English / Chinese / etc);
+kCustomizationLogoImage - UIImage - custom UIImage for logo inside the meeting room;
+kCustomizationUseFabricJSWhiteboard - BOOL - use native or Farbic.js whiteboard;
+kCustomizationUseAttendeeIdForWB - BOOL - whiteboard control flag;
+kCustomizationHideInviteUsersByEmail - BOOL - enable/disable UI for inviting participants to the meeting;
+kCustomizationHideParticipantsIcon - BOOL - enable/disable participants management.
