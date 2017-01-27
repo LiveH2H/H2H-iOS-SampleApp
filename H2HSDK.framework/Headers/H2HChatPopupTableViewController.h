@@ -30,5 +30,8 @@
 @property (weak, nonatomic) id<H2HChatPopupTableViewControllerDelegate> delegate;
 @property (strong, atomic) NSArray * arrayChatList;
 @property (assign, atomic)NSInteger selectedIndex;
+@property (atomic)H2HChatMessageModel *liveSupport;
+
 -(void)reloadTableView;
+-(void)refreshDataSourceArray;
 @end

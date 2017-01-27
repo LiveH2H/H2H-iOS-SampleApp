@@ -1,0 +1,50 @@
+[{
+    "pollId": "D0605453-E73C-47E2-A157-E40B2DCD7DEB",
+    "title": "Bestselling products",
+    "description": "test",
+    "questions": 
+    [
+      {
+        "questionId": "xxx...",
+        "text": "Which product was our bestseller last quarter?",
+        "options": 
+        [
+         {
+         "optionId": "xxx...",
+         "text": "Protein Powder"
+         },
+         {
+         "optionId": "xxx...",
+         "text": "Fish oil"
+         },
+         {
+         "optionId": "xxx...",
+         "text": "Multi Vitamin"
+         },
+         {
+         "optionId": "xxx...",
+         "text": "Lutein"
+         },
+         {
+         "optionId": "xxx...",
+         "text": "Vitamin C"
+         },
+         {
+         "optionId": "xxx...",
+         "text": "B6"
+         },
+         {
+         "optionId": "xxx...",
+         "text": "Zinc"
+         },
+         {
+         "optionId": "xxx...",
+         "text": "Other"
+         },
+        ]
+      }
+    ],
+    "startTime": 1475021422000,
+    "endTime": 1475043022000,
+    "duration":300000
+  }]

@@ -11,8 +11,6 @@
 #import "RTCUser.h"
 #import "RTCTranslatorUser.h"
 
-#define MAX_ALLOWED_ENABLED_COUNT 6
-
 /**
  *  An RTCRoom represents the virtual conference room where multiple users
  *  can have a conference call with each other. Such a conference call
@@ -38,6 +36,12 @@
 @property (readonly, strong) RTCUser *localUser;
 
 /**
+ *  The local user represents the current user of the device,
+ *  who has joined the room.
+ */
+@property (readwrite, strong) RTCUser *screenShareUser;
+
+/**
  *  The list of the remote users present in the room.
  */
 @property (readonly, strong) NSArray<RTCUser *> *users;
@@ -46,6 +50,16 @@
  *  The list of the translator users present in the room.
  */
 @property (readonly, strong) NSArray<RTCTranslatorUser *> *translatorUsers;
+
+/**
+ *  Boolean value whether Audio is toggled by Host for local user
+ */
+@property (readonly) BOOL isAudioToggledByHost;
+
+/**
+ *  Boolean value whether Video is toggled by Host for local user
+ */
+@property (readonly) BOOL isVideoToggledByHost;
 
 /**
  *  Gets the user with the specified username.
@@ -64,6 +78,9 @@
  *  @return The required translator user if found. Else returns @p nil.
  */
 - (RTCTranslatorUser *)translatorUserWithName:(NSString *)userName;
-
-
+/**
+ *  Gets the user who is host.
+ *  @return The required host user if found. Else returns @p nil.
+ */
+- (RTCUser *)getHostUser;
 @end

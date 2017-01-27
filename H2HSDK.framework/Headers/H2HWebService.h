@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "H2HWebServiceDelegate.h"
 #import "H2HErrorObject.h"
+#import "Reachability.h"
 
 @interface H2HWebService : NSObject
 /**
@@ -44,6 +45,20 @@
 -(void)parseResponse:(NSDictionary *)response ;
 
 /**
+ * @brief Parses response.
+ *
+ * @details This method will be implemented by child classes and have their own parsing logic.
+ *
+ * @param response of request in dictionary format.
+ *
+ * @param HMError
+ *      $hmError -In case of failer of error will be sent in this param.
+ *
+ * @return
+ */
+-(void)parseAsyncResponse:(NSDictionary *)response andError:(H2HErrorObject**)error;
+
+/**
  * @brief Sends synchronous webservice request.
  *
  * @details This method will send synchronous request.
@@ -53,6 +68,18 @@
  * @return Response in NSDictionary format.
  */
 -(void)sendSyncRequest:(H2HErrorObject**)error;
+
+
+/**
+ * @brief Sends synchronous webservice request.
+ *
+ * @details This method will send synchronous request.
+ *
+ * @param error - In case of failer of error will be sent in this param.
+ *
+ * @return void.
+ */
+-(void)sendAsyncRequest:(H2HErrorObject**)error;
 
 /**
  * @brief sends response to caller of webservice

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "H2HSDKIntegrationSample/ViewControllers/JoinMeetingTableViewController.swift"
+            timestampString = "507243316.843107"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "249"
+            endingLineNumber = "249"
+            landmarkName = "joinMeetingByEmail(meetingId:email:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "H2HSDKIntegrationSample/ViewControllers/JoinMeetingTableViewController.swift"
+            timestampString = "507243330.44431"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "322"
+            endingLineNumber = "322"
+            landmarkName = "requestWithURL(urlString:params:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "H2HSDKIntegrationSample/ViewControllers/JoinMeetingTableViewController.swift"
+            timestampString = "507243336.385297"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "317"
+            endingLineNumber = "317"
+            landmarkName = "requestWithURL(urlString:params:completionHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "H2HSDKIntegrationSample/ViewControllers/JoinMeetingTableViewController.swift"
+            timestampString = "507243353.732131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "328"
+            endingLineNumber = "328"
+            landmarkName = "requestWithURL(urlString:params:completionHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "H2HSDKIntegrationSample.JoinMeetingTableViewController.((requestWithURL in _25E5DD5246A1B1AB42BA031FA4BE60F6) (Swift.String, params : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;, completionHandler : (Swift.Optional&lt;__ObjC.NSDictionary&gt;, Swift.Optional&lt;__ObjC.NSURLResponse&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "H2HSDKIntegrationSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yankunjin/Downloads/H2H-iOS-SampleApp-master-4/H2HSDKIntegrationSample/ViewControllers/JoinMeetingTableViewController.swift"
+                  timestampString = "507243353.739035"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "328"
+                  endingLineNumber = "328"
+                  offsetFromSymbolStart = "664">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "H2HSDKIntegrationSample.JoinMeetingTableViewController.((requestWithURL in _25E5DD5246A1B1AB42BA031FA4BE60F6) (Swift.String, params : Swift.Dictionary&lt;Swift.String, Swift.AnyObject&gt;, completionHandler : (Swift.Optional&lt;__ObjC.NSDictionary&gt;, Swift.Optional&lt;__ObjC.NSURLResponse&gt;, Swift.Optional&lt;__ObjC.NSError&gt;) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "H2HSDKIntegrationSample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/yankunjin/Downloads/H2H-iOS-SampleApp-master-4/H2HSDKIntegrationSample/ViewControllers/JoinMeetingTableViewController.swift"
+                  timestampString = "507243353.740336"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "328"
+                  endingLineNumber = "328"
+                  offsetFromSymbolStart = "700">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

@@ -29,7 +29,19 @@
  *  The media video.
  */
 #define MEDIA_VIDEO         (@"video")
+/**
+ *  The audio sticky bit.
+ */
+#define IS_AUDIO_STICKY     (@"isAudioSticky")
+/**
+ *  The video sticky bit.
+ */
+#define IS_VIDEO_STICKY     (@"isVideoSticky")
 
+/**
+ *  The network Statistics Fetch Interval in seconds
+ */
+#define networkStatsFetchInterval 60.0
 
 #pragma mark - Notification names
 
@@ -124,6 +136,22 @@
 /**
  *  This notification is posted to indicate that the Translator has joined metting.
  */
+#define RTCNotificationUsersListChanged     (@"UsersListChanged")
+
+/**
+ *  This notification is posted to indicate that the new user has arrived the meeting.
+ */
+#define RTCNotificationNewUserHasArrived     (@"NewUserHasArrived")
+
+/**
+ *  This notification is posted to indicate that the existing user has left the meeting.
+ */
+#define RTCNotificationExistingUserHasLeft    (@"ExistingUserHasLeft")
+
+
+/**
+ *  This notification is posted to indicate that the Whiteboard state has changed.
+ */
 #define RTCNotificationWhiteboardStateChanged       (@"whiteboardStateChanged")
 
 /**
@@ -159,6 +187,129 @@
  */
 #define RTCNotificationLeftRoomReceived  (@"NotifyLeftRoomReceived")
 
+/**
+ * This notification is posted when host wanted to remove user from the meeting
+ */
+#define RTCNotificationStickyRemoveMeetReceived  (@"NotifyStickyRemoveMeetReceived")
+
+/**
+ * This notification is posted when network status is changed
+ */
+#define RTCNotificationNetworkStatusChanged  (@"NotifyNetworkStatusChanged")
+
+/**
+ * This notification is posted when network status is changed for local users local network
+ */
+#define RTCNotificationLocalNetworkStatusChanged  (@"NotifyLocalStatusChanged")
+
+/**
+ * This notification is posted when network status is changed for local users local network
+ */
+#define RTCNotificationLocalNetworkStatusChangedUI  (@"NotifyLocalStatusChangedUI")
+
+/**
+ * This notification is posted when Admin support user has joined room
+ */
+#define RTCNotificationAdminJoined  (@"NotifyAdminJoined")
+
+/**
+ * This notification is posted when host needs to toggle media of local user
+ */
+#define RTCNotificationHostNeedToToggleMedia  (@"HostNeedToToggleMedia")
+
+/**
+ * This notification is posted when participant button has to be deselected
+ */
+#define RTCNotificationDeselectParticipantButton  (@"DeselectParticipantButton")
+
+/**
+ * This notification is posted when camera is switched for local user from front to back or vice versa
+ */
+#define RTCNotificationCameraSwitched   (@"CameraSwitched")
+
+/**
+ * This notification is posted when share screen started
+ */
+#define RTCNotificationShareScreenStarted   (@"ShareScreenStarted")
+
+/**
+ * This notification is posted when share screen stopped
+ */
+#define RTCNotificationShareScreenStopped   (@"ShareScreenStopped")
+
+/**
+ * This notification is posted when raise hand permission is received
+ */
+#define RTCNotificationUpdateRaiseHandPermission   (@"UpdateRaiseHandPermission")
+
+/**
+ * This notification is posted when chat permission is received
+ */
+#define RTCNotificationUpdateChatPermission   (@"UpdateChatPermission")
+
+/**
+ *  This notification is posted to that we recived transcript.
+ */
+
+#define RTCNotificationRaiseTranscriptReceived (@"NotifyRaiseTranscriptReceived")
+
+/**
+ *  This notification is posted to recording is started at server.
+ */
+
+#define RTCNotificationRecordingStartedReceived (@"NotifyrecordingStartedReceived")
+
+/**
+ *  This notification is posted to that recording is stopped at server.
+ */
+#define RTCNotificationRecordingStoppedReceived (@"NotifyRecordingStoppedReceived")
+
+/**
+ *  This notification is posted to that we recived attendee serve hand success [request participant to enable audio].
+ */
+
+#define RTCNotificationAttendeeServeHandSuccessForBroadcast (@"NotifyAttendeeServeHandSuccessForBroadcast")
+/**
+ *  This notification is posted when error join room retry limit received
+ */
+#define RTCNotificationErrorJoinRoomRetryLimit  (@"NotifyErrorJoinRoomRetryLimit")
+
+/**
+ *  This notification is posted to indicate that the stream for a particular user for screen sharing has changed.
+ *  The notification's object is the user (RTCUser) whose stream has changed.
+ */
+#define RTCNotificationUserScreenShareStreamChanged        (@"userScreenShareStream")
+
+/**
+ *  This notification is posted when host wants to unmute the media but we need confimation from user
+ */
+#define RTCNotificationMediaToggleConfirmation (@"MediaToggleConfirmation")
+
+/**
+ *  This notification is posted when BROADCAST host entered or left the meeting
+ */
+#define RTCNotificationReloadHLSVideo (@"ReloadHLSVideo")
+
+/**
+ * This notification is posted when media for attendee is toggled.
+ */
+#define RTCNotificationMediaToggleAttendee  (@"NotifyMediaToggleAttendee")
+
+/**
+ * This notification is posted when we receive test connection result.
+ */
+#define RTCNotificationTestConnectionResultReceived  (@"NotifyTestConnectionResultReceived")
+
+/**
+ * This notification is posted when we receive test connection result.
+ */
+#define RTCNotificationTCPMediaICECompleted          (@"NotifyTCPMediaICECompleted")
+
+/**
+ * This notification is posted when we receive join room fail.
+ */
+#define RTCNotificationJoinRoomFail          (@"NotifyJoinRoomFail")
+
 #pragma mark - Role constants
 /**
  *  This constant is used to identify if local user is host
@@ -168,6 +319,40 @@
  *  This constant is used to identify if local user is host
  */
 #define value_h                                             @"H"
+
+/**
+ *  This constant is used to identify if local user is Participant
+ */
+#define value_P                                             @"P"
+
+/**
+ *  This constant is used to identify if local user is Admin support
+ */
+#define value_S                                             @"S"
+
+/**
+ *  This constant is used to identify if local user is Admin support
+ */
+#define value_Attendee_webinar                              @"Attendee_Webinar"
+
+/**
+ *  This constant is used to identify key for meeting type
+ */
+#define key_meetingType                                    @"meetingType"
+
+/**
+ *  This constant is used to identify room type
+ */
+#define value_meeting_group                                 @"group"
+
+/**
+ *  This constant is used to identify room type
+ */
+#define value_meeting_webinar                               @"webinar"
+/**
+ *  This constant is used to identify room type
+ */
+#define value_meeting_broadcast                               @"broadcast"
 
 
 #pragma mark - State constants
@@ -334,6 +519,75 @@ typedef NS_ENUM (NSInteger, MediaType) {
      *  Denotes the media type video.
      */
     MediaTypeVideo = 2
+};
+
+
+/**
+ * The camera positions.
+ */
+typedef NS_ENUM (NSInteger, DeviceCameraPosition) {
+    /**
+     *  Denotes the position of Front camera.
+     */
+    DeviceCameraPositionFront = 1,
+    /**
+     *  Denotes the position of Back Camera.
+     */
+    DeviceCameraPositionBack = 2
+};
+
+/**
+ * Media toggle states.
+ */
+typedef NS_ENUM (NSInteger, MediaToggleState) {
+    /**
+     *  Denotes media is ON.
+     */
+    MediaStateON = 1,
+    /**
+     *  Denotes media is OFF.
+     */
+    MediaStateOFF = 2,
+    /**
+     *  Denotes media is disabled, but ON .
+     */
+    MediaStateDisabledON = 3,
+    /**
+     *  Denotes media is disabled, and OFF .
+     */
+    MediaStateDisabledOFF = 4,
+    /**
+     *  Denotes media hidden .
+     */
+    MediaStateHidden = 5
+};
+
+/**
+ * Toggle states.
+ */
+typedef NS_ENUM (NSInteger, ToggleState) {
+    /**
+     *  Denotes media is ON/OFF.
+     */
+    ToggleStateOnOFF = 1,
+    /**
+     *  Denotes media is Disabled/Enabled.
+     */
+    ToggleStateEnabledDisabled = 2,
+};
+
+/**
+ * Toggle Permission Type.
+ */
+typedef NS_ENUM (NSInteger, TogglePermissionType) {
+    /**
+     *  Denotes media is ON/OFF.
+     */
+    TogglePermissionTypeHandRaise = 1,
+    /**
+     *  Denotes media is Disabled/Enabled.
+     */
+    TogglePermissionTypeChat = 2,
 };
 
 #endif /* RTCSessionManagerConstants_h */

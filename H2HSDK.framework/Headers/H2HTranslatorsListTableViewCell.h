@@ -10,6 +10,10 @@
 
 @interface H2HTranslatorsListTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *labelTranslationLanguage;
+
+-(void)setCheckMark:(BOOL)shouldSet;
+
+
+-(void)setTranslationLanguage:(NSString *)translationLanguage;
 
 @end

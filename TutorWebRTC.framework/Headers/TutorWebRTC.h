@@ -36,6 +36,7 @@ FOUNDATION_EXPORT const unsigned char TutorWebRTCVersionString[];
 #import <TutorWebRTC/RTCVideoDataTrack.h>
 
 #import <TutorWebRTC/RTCVideoView.h>
+#import <TutorWebRTC/RTCTranscript.h>
 
 
 #pragma mark - Other imports

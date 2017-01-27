@@ -37,5 +37,18 @@
  */
 -(void) setChatBadgeIconVisibility:(BOOL)shouldShow;
 
+/*!
+ * @discussion Method to change Visibility state of participant Badge Icon
+ * @param Visible is a boolean if YES.
+ */
+-(void) setParticipantBadgeIconVisibility:(BOOL)shouldShow;
+
+/*!
+ * @discussion Method to change state of hand raise Icon
+ * @param isAllowed is a boolean if YES.
+ */
+-(void) setHandRaiseIconForPermission:(BOOL)isAllowed;
+
+
 -(void) connectedToRoom:(BOOL)connected;
 @end

@@ -35,7 +35,9 @@
  */
 @property (weak, nonatomic) id<H2HNewChatViewControllerDelegate> delegate;
 @property (strong, atomic) NSArray * arrayAvailableUsers;
+@property (strong, nonatomic) NSArray * arraySelectedUsers;
 
 @property (weak, nonatomic) NSLayoutConstraint *constraintBottomMargin;
+
 
 @end

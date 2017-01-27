@@ -24,7 +24,33 @@
 
 #import "H2HResourceManager.h"
 
-#import "H2HSDKExt.h"
+#import "H2HBasicUtility.h"
+
+#import "H2HPhoneToolbarViewController.h"
+
+#import "H2HPhoneToolbarManager.h"
+
+#import "H2HPollViewController.h"
+
+#import "H2HPollQuestionModel.h"
+
+#import "H2HPollSubmitAnswerWebService.h"
+
+#import "H2HGetPollListWebService.h"
+
+#import "H2HErrorObject.h"
+
+#import "H2HWebServiceDelegate.h"
+
+#import "H2HChartOptionModel.h"
+
+#import "H2HPollListModel.h"
+
+#import "VBPieChart.h"
+
+#import "H2HNewBaseViewControllerPad.h"
+
+#import "H2HTestConnectionSubmitViewController.h"
 
 //! Project version number for H2HSDK.
 FOUNDATION_EXPORT double H2HSDKVersionNumber;

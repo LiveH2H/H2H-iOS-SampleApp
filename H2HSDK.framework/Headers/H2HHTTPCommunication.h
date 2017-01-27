@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol HTTPCommunicationProtocol<NSObject>
+
+//handle async response
+- (void)receivedAsyncResponse:(NSData *)receivedData andError:(H2HErrorObject**)error;
+
+@end
+
 @interface H2HHTTPCommunication : NSObject
 
+@property (nonatomic, weak) id <HTTPCommunicationProtocol> delegate;
 /**
  * @brief Server hostname.
  *
@@ -37,4 +45,11 @@
  * @return NSData is response to the synchronous request.
  */
 -(NSData *)sendSyncRequest:(H2HErrorObject**)error;
+
+/**
+ * @discussion Sends asynchronous webservice request.
+ * @param errorObj - In case of failer of error will be sent in this param.
+ * @return void.
+ */
+- (void)sendAsyncRequest:(H2HErrorObject**)errorObj;
 @end

@@ -11,7 +11,13 @@
 
 typedef NS_OPTIONS(NSUInteger, VideoConferenceViewMode) {
     VideoConferenceViewModeStandard = 0,
-    VideoConferenceViewModeExpanded = 1 << 0
+    VideoConferenceViewModeExpanded = 1 << 0,
+    VideoConferenceViewModePhone = 1 << 1,
+    //BEGIN - Changes for adding content view in base view
+    VideoConferenceViewModeiPadFullScreeen
+
+    //END - Changes for adding content view in base view
+
 };
 
 @interface H2HVideoConferenceViewController : UIViewController

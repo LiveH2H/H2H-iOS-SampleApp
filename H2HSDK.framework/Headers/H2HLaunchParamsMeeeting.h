@@ -25,5 +25,8 @@
 @property (nonatomic, copy)   NSMutableArray*   whiteboards;
 @property (nonatomic, copy)   NSString*         origin;
 @property (nonatomic, copy)   NSString*         originMeetingID;
+@property (nonatomic, copy)   NSArray*          inviteesList;
+
+//@property (nonatomic, readonly, getter=getHLSVideoURL) NSString *hlsVideoURL;
 
 @end

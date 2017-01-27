@@ -10,7 +10,7 @@ import UIKit
 import H2HSDK
 
 // server base URL
-let H2HServerURL = "http://52.53.238.68:8080/tutormeetweb/"
+let H2HServerURL = "https://sandbox.liveh2h.com/tutormeetweb/"
 
 
 @UIApplicationMain

@@ -20,6 +20,7 @@
 
 @property (nonatomic, copy) NSString* meetingID;
 @property (nonatomic, copy) NSString* meetingIDWithoutOrigin;
-@property (nonatomic, copy) NSArray*  whiteboards;
+@property (nonatomic, readonly, getter=getMeetingIdUserFriendly) NSString *meetingIdUserFriendly;
+@property (nonatomic, copy) NSArray* whiteboards;
 
 @end

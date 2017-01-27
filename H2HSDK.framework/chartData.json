@@ -1,0 +1,47 @@
+{
+  "returnCode": 0,
+  "poll": {
+    "pollId": "B59DB5B3-E7A3-4311-A25C-7ACAF637D86F",
+    "title": "poll title",
+    "description": "poll description",
+    "startTime": 4444444444443,
+    "endTime": 5555555555557,
+    "totalSubmission": 3,
+ 
+    "questions": [
+      {
+        "questionId": "6EF71315-23A1-4D65-9204-DCD6D275771C",
+        "text": "question1",
+        "options": [
+          {
+            "optionId": "2CE63254-E1CD-4F81-9438-572CBD74A5A8",
+            "text": "options1",
+            "totalPickedCount": 3,
+            "color": "#B6D142",
+            "percentage": 100
+          }
+        ]
+      },
+      {
+        "questionId": "8EB94E35-F0C5-43B1-A63B-F65AD03B151A",
+        "text": "question2",
+        "options": [
+          {
+            "optionId": "2B56DB9A-91B9-4560-B5DF-5767D0FEBD1B",
+            "text": "options21",
+            "totalPickedCount": 3,
+            "color": "#B6D142",
+            "percentage": 100
+          },
+          {
+            "optionId": "854C6018-5624-4B67-B9A6-A44FBF707C23",
+            "text": "options21",
+            "totalPickedCount": 2,
+            "color": "#37AECE",
+            "percentage": 66.66667
+          }
+        ]
+      }
+    ]
+  }
+}

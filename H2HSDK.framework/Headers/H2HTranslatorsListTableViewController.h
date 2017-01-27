@@ -29,8 +29,8 @@
 
 @property (nonatomic, weak) id <H2HTranslatorsListOptionSelectedDelegate> delegate;
 
+@property (nonatomic)NSString *translatorName;
+
 @property (strong, nonatomic) IBOutlet UITableView *tableViewTranslatorsList;
 
-
--(void)setSelectedCellForTranslatorName:(NSString *)translatorName;
 @end

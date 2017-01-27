@@ -1,0 +1,133 @@
+{
+    "returnCode": 0,
+    "pollList": [
+                 {
+                 "pollId": "7D5180B1-3C79-44AF-B8B9-0B97ABAD1AF4",
+                 "title": "Poll 1 : Future Poll",
+                 "description": "Poll 1 Description : Future Poll",
+                 "questions": [
+                               {
+                               "questionId": "8BB7659D-E417-4701-A667-55B66AE05DC9",
+                               "text": "new question121",
+                               "options": [
+                                           {
+                                           "optionId": "5887E67C-DAB2-497A-8B86-E37B2B068882",
+                                           "text": "new option121",
+                                           "totalPickedCount": 10,
+                                           "color": null,
+                                           "percentage": 10
+                                           }
+                                           ]
+                               },
+                               {
+                               "questionId": "60ED2520-DF09-403D-8702-D4D64A73FF43",
+                               "text": "new question122",
+                               "options": [
+                                           {
+                                           "optionId": "376D1183-D0F7-4E4B-9874-AFE839E84D5D",
+                                           "text": "new option122",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage": 20
+                                           },
+                                           {
+                                           "optionId": "6C280A9B-3B9F-4AE7-AC30-C65593B1801D",
+                                           "text": "new option123",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage": 30
+                                           }
+                                           ]
+                               }
+                               ],
+                 "startTime": 1482718677922,
+                 "started": true,
+                 "endTime": 1482718677922
+                 },
+                 {
+                 "pollId": "7D5180B1-3C79-44AF-B8B9-0B97ABAD1AF4",
+                 "title": "Poll 2",
+                 "description": "Poll 2 Description",
+                 "questions": [
+                               {
+                               "questionId": "8BB7659D-E417-4701-A667-55B66AE05DC9",
+                               "text": "new question121",
+                               "options": [
+                                           {
+                                           "optionId": "5887E67C-DAB2-497A-8B86-E37B2B068882",
+                                           "text": "new option121",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage": 10
+                                           }
+                                           ]
+                               },
+                               {
+                               "questionId": "60ED2520-DF09-403D-8702-D4D64A73FF43",
+                               "text": "new question122",
+                               "options": [
+                                           {
+                                           "optionId": "376D1183-D0F7-4E4B-9874-AFE839E84D5D",
+                                           "text": "new option122",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage": 20
+                                           },
+                                           {
+                                           "optionId": "6C280A9B-3B9F-4AE7-AC30-C65593B1801D",
+                                           "text": "new option123",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage": 30
+                                           }
+                                           ]
+                               }
+                               ],
+                 "startTime": 1475409729000,
+                 "started": false,
+                 "endTime": 1480597346000
+                 },
+                 {
+                 "pollId": "7D5180B1-3C79-44AF-B8B9-0B97ABAD1AF4",
+                 "title": "Poll 3",
+                 "description": "Poll 3 Description",
+                 "questions": [
+                               {
+                               "questionId": "8BB7659D-E417-4701-A667-55B66AE05DC9",
+                               "text": "new question121",
+                               "options": [
+                                           {
+                                           "optionId": "5887E67C-DAB2-497A-8B86-E37B2B068882",
+                                           "text": "new option121",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage": 10
+                                           }
+                                           ]
+                               },
+                               {
+                               "questionId": "60ED2520-DF09-403D-8702-D4D64A73FF43",
+                               "text": "new question122",
+                               "options": [
+                                           {
+                                           "optionId": "376D1183-D0F7-4E4B-9874-AFE839E84D5D",
+                                           "text": "new option122",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage": 20
+                                           },
+                                           {
+                                           "optionId": "6C280A9B-3B9F-4AE7-AC30-C65593B1801D",
+                                           "text": "new option123",
+                                           "totalPickedCount": 0,
+                                           "color": null,
+                                           "percentage":30
+                                           }
+                                           ]
+                               }
+                               ],
+                 "startTime": 1475409729000,
+                 "endTime": 1480597346000
+                 }
+                 ]
+}

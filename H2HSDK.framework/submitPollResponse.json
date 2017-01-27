@@ -1,0 +1,33 @@
+{
+    "returnCode": 0,
+    "poll": {
+        "pollId": "6642C82F-1915-42D4-B34D-00AE75B2207B",
+        "title": "poll title",
+        "description": "poll description",
+        "questions": [
+                      {
+                      "questionId": "8A91AC81-5224-4D6D-BF57-FBE09FDFE3DD",
+                      "text": "question2",
+                      "options": [
+                                  {
+                                  "optionId": "4DBE4E01-19CD-459E-958D-1AE69250BCC7",
+                                  "text": "options21",
+                                  "totalPickedCount": 1,
+                                  "color": "#B6D142",
+                                  "percentage": 50
+                                  },
+                                  {
+                                  "optionId": "A77807B6-9956-48E9-95FC-5B3894927581",
+                                  "text": "options21",
+                                  "totalPickedCount": 1,
+                                  "color": "#37AECE",
+                                  "percentage": 50
+                                  }
+                                  ]
+                      }
+                      ],
+        "startTime": 4444444444443,
+        "endTime": 5555555555557,
+        "totalSubmission": 1
+    }
+}

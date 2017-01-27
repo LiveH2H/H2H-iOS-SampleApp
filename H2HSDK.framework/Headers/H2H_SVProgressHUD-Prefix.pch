@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'H2H_SVProgressHUD' target in the 'H2H_SVProgressHUD' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif

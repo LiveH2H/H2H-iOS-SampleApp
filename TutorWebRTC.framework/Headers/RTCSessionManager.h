@@ -17,6 +17,7 @@
 #import "RTCStunServer.h"
 
 #import "RTCMediaToggleData.h"
+#import "RTCMediaConstraint.h"
 
 typedef enum : NSUInteger {
     RTCSessionManagerCameraOrientationPortrait = 1,
@@ -27,6 +28,13 @@ typedef enum : NSUInteger {
     RTCSessionManagerCameraOrientationLandscapeOnly = 6,
     RTCSessionManagerCameraOrientationBoth = 7
 } RTCSessionManagerCameraOrientation;
+
+typedef NS_ENUM(NSUInteger, MEETING_TYPE) {
+    MEETING_TYPE_GROUP_CALL,
+    MEETING_TYPE_WEBINAR,
+    MEETING_TYPE_BROADCAST,
+    MEETING_TYPE_NONE
+};
 
 /**
  *  Responsibilities include:
@@ -53,7 +61,9 @@ typedef enum : NSUInteger {
 /**
  *  The dictionary of parameters for joining the room
  */
-@property (readonly, strong) NSDictionary *_Nonnull joinRoomParameters;
+@property (readwrite, strong) NSDictionary *_Nonnull joinRoomParameters;
+
+@property (readonly, getter=getMeetingType) MEETING_TYPE meetingType;
 
 /**
  *  The amount of time in seconds to wait before trying to connect again.
@@ -95,6 +105,19 @@ typedef enum : NSUInteger {
  *   Needs to be set before join.
  */
 @property(readwrite, nonatomic) RTCSessionManagerCameraOrientation cameraOrientation;
+
+/**
+ *  The camera position that is to be used for capturing video.
+ *  Default value suggests use front camera
+ */
+@property(readwrite,nonatomic) DeviceCameraPosition cameraPosition;
+
+/**
+ *  Flag which controlls RTCIceTransportsType
+ */
+@property (readwrite, nonatomic) BOOL relayOnly;
+
+@property (readonly, nonatomic) NSInteger maxVideoCount;
 
 /**
  *  Initializes an instance of RTCSessionManager with the signaling server URL.
@@ -151,13 +174,19 @@ typedef enum : NSUInteger {
  *  @param maximumRetryAttempts The maximum number of retry attempts before stopping the re-connection process.
  *  @param arrayOfServers       The list of servers required for bypassing NATs for successful RTC even on restricted networks.
  *  @param joinRoomParameters   The dictionary of parameters for joining the room
+ *  @param minMediaConstraint   Minimum media constraint depending on meeting type
+ *  @param maxMediaConstraint   Maximum media constraint depending on meeting type
  *  @return An instance of RTCSessionManager or @p nil.
  */
 - (instancetype _Nonnull)initWithServerURL: (NSURL *_Nonnull)serverURL
                                 retryDelay: (NSUInteger)retryDelay
                    andMaximumRetryAttempts: (NSUInteger)maximumRetryAttempts
                          andArrayOfServers: (NSArray<RTCServer *> *_Nonnull)arrayOfServers
-                     andJoinRoomParameters: (NSDictionary *_Nonnull)joinRoomParameters;
+                     andJoinRoomParameters: (NSDictionary *_Nonnull)joinRoomParameters
+                     andMinMediaConstraint: (RTCMediaConstraint *_Nonnull) minMediaConstraint
+                     andMaxMediaConstraint: (RTCMediaConstraint *_Nonnull) maxMediaConstraint
+                               isRelayOnly: (BOOL)relayOnly
+                             maxVideoCount: (NSUInteger)maxVideoCount;
 
 /**
  *  Updates the URL of the signaling server.
@@ -195,4 +224,23 @@ typedef enum : NSUInteger {
 andIsChangesForLocalUser: (BOOL) isChangesForLocalUser
              andError : (NSError *_Nonnull __autoreleasing *_Nonnull)error;
 
+/**
+ *  Switch camera position from front to back or vice versa
+ */
+- (void) switchCamera;
+
+/**
+ *  Check if user has camera permissions.
+ */
+-(BOOL) isVideoPermissionGranted;
+
+/**
+ *  Check if user has microphone permissions.
+ */
+-(BOOL) isAudioPermissionGranted;
+
+/**
+ *  Request for test connection.
+ */
+-(void)testConnection;
 @end

@@ -10,6 +10,14 @@
 #import <Foundation/Foundation.h>
 #import "H2HContainer.h"
 #import "AppConstants.h"
+#import "H2HChatViewController.h"
+#import "H2HNewVideoConferenceViewControllerPad.h"
+
+#ifdef H2HSDK
+#import <H2HSDK/H2HSDK-Swift.h>
+#else
+//#import <H2H-Swift.h>
+#endif
 
 @interface H2HContainerManager : NSObject
 
@@ -25,6 +33,11 @@
  * @return instanceType is object of type H2HContainer
  */
 +(instancetype) sharedInstance;
+
+/*!
+ * @discussion Sets array of view controllers
+ */
+- (void)setViewControllers:(NSArray *)viewControllers;
 
 /*!
  * @discussion Cleares locally mainained data of all containers.
@@ -75,6 +88,13 @@
 -(void) addContainerWithType:(CONTAINER_TYPE)type andObject:(NSObject*)object;
 
 /*!
+ * @discussion Removes a container to manager with particular type and object value.
+ * @param type is type of container to be removed.
+ * @param object is the object that container holds.
+ */
+- (void)removeContainerWithType:(CONTAINER_TYPE)type andObject:(NSObject*)object;
+
+/*!
  * @discussion Method to exchange container at from index with container at to index.
  * @param fromIndex is the index of container that needs to be exchanged.
  * @param toIndex is the index of container with which exchange needs to be done.
@@ -105,5 +125,20 @@
  * @param index is the index of container which needs to be returned.
  */
 -(UIViewController *)viewControllerAtIndex:(NSInteger)index;
+
+/*!
+ * @discussion Returns video view controller
+ */
+@property (readonly, nonatomic, getter=getVideoVC) H2HNewVideoConferenceViewControllerPad *videoVC;
+
+/*!
+ * @discussion Returns chat view controller
+ */
+@property (readonly, nonatomic, getter=getChatVC) H2HChatViewController *chatVC;
+
+/*!
+ * @discussion Returns whiteboard manager view controller
+ */
+@property (readonly, nonatomic, getter=getWhiteboardVC) H2HWhiteboardManagerViewController *whiteboardVC;
 
 @end

@@ -12,6 +12,18 @@
 
 + (BOOL) isStringNilOrEmpty: (NSString *) string;
 +(void) showAlert:(UIAlertController*)alert;
++(BOOL)isIPhone;
+//+(BOOL)shouldUseFabricJSWhiteboard;
+
++ (UIView *)roundCornersOnView:(UIView *)view onTopLeft:(BOOL)tl topRight:(BOOL)tr bottomLeft:(BOOL)bl bottomRight:(BOOL)br radius:(float)radius;
+
++(NSString *)getFirstCharcterOfEachWordCapitalized:(NSString *)data;
+
++(BOOL) enableVBPieCharts;
+
++(NSString *)getTestConnectionMessageFor:(RTCTestConnectionData *)testConnectionData;
+
+
 @end
 
 

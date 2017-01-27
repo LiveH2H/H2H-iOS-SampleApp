@@ -30,13 +30,28 @@ options:NSNumericSearch] == NSOrderedAscending)
 ([[[UIDevice currentDevice] systemVersion] compare:v \
 options:NSNumericSearch] != NSOrderedDescending)
 
+#define kCustomizationHideTranslator            @"kCustomizationHideTranslator"
+#define kCustomizationHideTranscript            @"kCustomizationHideTranscript"
+#define kCustomizationLogoImage                 @"kCustomizationLogoImage"
+#define kCustomizationLanguage                  @"kCustomizationLanguage"
+#define kCustomizationUseFabricJSWhiteboard     @"kCustomizationUseFabricJSWhiteboard"
+#define kCustomizationUseAttendeeIdForWB        @"kCustomizationUseAttendeeIdForWB"
+#define kCustomizationHideParticipantsIcon      @"kCustomisztionHideParticipantsIcon"
+#define kCustomizationHideInviteUsersByEmail    @"kCustomizationHideInviteUsersByEmail"
+
+#define kCustomLanguageDefault          nil
+#define kCustomLanguageEnglish          @"english"
+#define kCustomLanguageChinese          @"chinese"
+
 @interface H2HSDKExt : NSObject <H2HWebServiceDelegate>
 
 + (H2HSDKExt *)sharedInstance;
 @property (weak, nonatomic) UIViewController *externalParentViewController;
 
 - (void)joinMeetingWithToken:(NSString *)token onServer:(NSString *)serverURL usingOrigin:(NSString *)origin withReferrer:(NSString *)referrerURL fromViewController:(UIViewController *)parentViewController;
-- (void)leaveMeeting;
+- (void)joinMeetingWithToken:(NSString *)token onServer:(NSString *)serverURL usingOrigin:(NSString *)origin withReferrer:(NSString *)referrerURL fromViewController:(UIViewController *)parentViewController withCustomizationParameters:(NSDictionary *)customizationParameters;
+- (void)joinMeetingWithToken:(NSString *)token onServer:(NSString *)serverURL usingOrigin:(NSString *)origin withReferrer:(NSString *)referrerURL fromViewController:(UIViewController *)parentViewController withCustomizationParameters:(NSDictionary *)customizationParameters andInviteURL:(NSString *)inviteURL;
+- (void)leaveMeetingWithReason:(NSString*)reason;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions;
 - (void)applicationWillResignActive:(UIApplication *)application;

@@ -1,0 +1,248 @@
+<html>
+    
+    <head>
+        <!-- Fabric JS Source path -->
+        <script src="fabric.js-master/dist/fabric.min.js"></script>
+        
+        
+        <!-- Customize Style -->
+        <style>
+            
+            html, body
+            {
+                /*1024 X 1320*/
+                width: 100%;/* (1024/2)+ 50Margin */ /* Use 100% to fit html to screen*/
+                height: 100%;/* close to device height and greater than (1320/2) */ /* Use 100% to fit html to screen*/
+                margin: 0px;
+                border: 0;/* Set border 10 for debugging */
+                border-style: solid;
+                border-color: #0000ff;
+                /*overflow: hidden;*/ /*  Disable scrollbars */
+                /*display: block;   No floating content on sides */
+            }
+        
+            div#divForCanvasStyling
+            {
+                position: absolute;
+                margin: auto;
+                width: 512px;
+                height: 660px;
+                left:0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+            }
+        
+        </style>
+        
+    </head>
+    
+    <body style="background-color:#EDEDED;">
+        
+        
+        
+        <!-- Canvas Size: 1024 X 1320 -->
+        
+        <div id="divForCanvasStyling">
+        <canvas id="canvas" width="512" height="660"></canvas>
+        </div>
+        
+        
+        
+        <!-- Script for auto adjusting canvas height & width as per frame of UIWebView -->
+        <script>
+            /*
+            var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
+            var height = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+            var documentCanvas = document.getElementById("canvas");
+            
+            documentCanvas.width = 1024;//1024
+            documentCanvas.height = 768;//768
+            */
+            //alert("Canvas Width: "+width+"  Height: "+height);
+            var canvas = new fabric.Canvas('canvas',{backgroundColor : "#fff"});
+            canvas.renderAll();
+            </script>
+        
+        
+        
+        <!-- Server side implementation maintains array for each object 'type' and used those index for reference,
+             But canvas has only one array which contains all objects.
+             This function provides index mapping from server side custom index to canvas's default index
+         -->
+        
+        <script>
+
+
+        function getUpdatedIndex(objectType,receivedIndex)
+            {
+        
+                var canvasObjects = canvas.getObjects();
+                var indexOfObject = 0;
+                var numberOfObjectOfReceivedType = -1;
+                
+                for(obj in canvasObjects)
+                {
+                    if(canvasObjects[obj].get('type') == objectType)
+                    {
+                        numberOfObjectOfReceivedType++;
+                        
+                        if(receivedIndex == numberOfObjectOfReceivedType)
+                        {
+                            break;
+                        }
+                    }
+                    
+                    indexOfObject++;
+                }
+        
+     
+            return indexOfObject;
+        }
+        
+        </script>
+
+
+        <!-- Get image dimension for setting scaling factor -->
+        <script>
+    
+        function getImageDimensions(imageURL)
+        {
+            var image = new Image();
+            image.src = imageURL;
+        
+            image.onload = function()
+            {
+                document.location = 'canvas://_BackgroundImage_Index_0_X_0_Y_0_Width_'+ encodeURIComponent(image.width) + '_Height_' + encodeURIComponent(image.height);
+            };
+        }
+
+        </script>
+
+
+        <!-- Script for listing to canvas event and passing it to iOS code via URL Scheme -->
+        <script>
+            
+            //MOVE
+            var moveHandler = function (evt)
+            {
+                var movingObject = evt.target;
+                var index = canvas.getObjects().indexOf(evt.target);
+                document.location = 'canvas://_ObjectMove_Index_'+ encodeURIComponent(index) + '_X_' + encodeURIComponent(movingObject.get('left')) + '_Y_' + encodeURIComponent(movingObject.get('top'))
+            };
+        
+        canvas.on('object:moving', moveHandler);
+        
+        
+        //SCALE
+        var scaleHandler = function (evt)
+        {
+            var movingObject = evt.target;
+            //document.location = 'canvas://' + encodeURIComponent('scaling_object')
+            var index = canvas.getObjects().indexOf(evt.target);
+            document.location = 'canvas://_ObjectScale_Index_'+ encodeURIComponent(index) + '_X_' + encodeURIComponent(movingObject.get('left')) + '_Y_' + encodeURIComponent(movingObject.get('top'))
+            
+        };
+        
+        canvas.on('object:scaling', scaleHandler);
+        
+        
+        //MOUSE DOWN
+        var mouseDownHandler = function (evt)
+        {
+            var pointer = canvas.getPointer(evt.e);
+            var index = canvas.getObjects().indexOf(evt.target);
+            
+            if(pointer.x <= canvas.width && pointer.y <= canvas.height)/* In order to let canvas scroll discard events outside canvas */
+            {
+                document.location = 'canvas://_MouseDown_Index_'+ encodeURIComponent(index) + '_X_' + pointer.x + '_Y_' + pointer.y
+            }
+        };
+        
+        canvas.on('mouse:down', mouseDownHandler);
+        
+        
+        //MOUSE UP
+        var mouseUpHandler = function (evt)
+        {
+            var pointer = canvas.getPointer(evt.e);
+            var index = canvas.getObjects().indexOf(evt.target);
+            
+            if(pointer.x <= canvas.width && pointer.y <= canvas.height)/* In order to let canvas scroll discard events outside canvas */
+            {
+                document.location = 'canvas://_MouseUp_Index_'+ encodeURIComponent(index) + '_X_' + pointer.x + '_Y_' + pointer.y
+            }
+        };
+        
+        canvas.on('mouse:up', mouseUpHandler);
+        
+        
+        //MOVE
+        var modifiedHandler = function (evt)
+        {
+            //var movingObject = canvas.getActiveObject();
+            var index = canvas.getObjects().indexOf(evt.target);
+            
+            document.location = 'canvas://_ObjectModified' //+ '_X_' + encodeURIComponent(movingObject.get('left')) + '_Y_' + encodeURIComponent(movingObject.get('top'))
+        };
+        
+        canvas.on('object:modified', modifiedHandler);
+        
+            </script>
+        
+        
+        
+        <script>
+            
+        function zoomIn()
+        {
+            canvas.setZoom(canvas.getZoom() * 1.1 ) ;
+        }
+        
+        function zoomOut()
+        {
+            canvas.setZoom(canvas.getZoom() / 1.1 ) ;
+        }
+        
+        function zoomReset()
+        {
+            canvas.setZoom( 1 ) ;
+        }
+        
+        function goRight()
+        {
+            var units = 10 ;
+            var delta = new fabric.Point(units,0) ;
+            canvas.relativePan(delta) ;
+        }
+        
+        function goLeft()
+        {
+            var units = 10 ;
+            var delta = new fabric.Point(-units,0) ;
+            canvas.relativePan(delta) ;
+        }
+        
+        function goUp()
+        {
+            var units = 10 ;
+            var delta = new fabric.Point(0,-units) ;
+            canvas.relativePan(delta) ;
+        }
+        
+        function goDown()
+        {
+            var units = 10 ;
+            var delta = new fabric.Point(0,units) ;
+            canvas.relativePan(delta) ;
+        }
+        
+        </script>
+        
+
+        
+        
+        
+    </body>
+    
+</html>
