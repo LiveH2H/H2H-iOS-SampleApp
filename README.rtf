@@ -1,11 +1,13 @@
-Use Xcode 8.0 or higher
+Use Xcode 7.3 or earlier.
 
 Step 1.
 
   In your project’s folder copy below files. You can find these files in the FrameworksAndResources folder.
 
   H2HBundle.bundle
+
   TutorWebTC.framework
+
   H2HSDK.framework
 
 Step 2.
@@ -33,7 +35,7 @@ Step 4.
 Step 5.
 
   Create Podfile and add following statements:
-  platform :ios, >‘8.0’
+  platform :ios, ‘7.1’
 
   target ‘<Target Name>’ do
   pod 'KissXML'
@@ -61,4 +63,29 @@ Step 8.
 
 Step 9.
 
-  Clean and Build your project. Change the bundle Id to a unique ID (which is not used in tha past) and use your developer account to run the app on your device.
+  Clean and Build your project.
+
+
+
+Meeting Room Customization:
+
+Please use parameter "customizationDictionary" from H2H SDK's joinMeetingWithToken method to customize the meeting room. Here is the example of customization dictionary:
+
+NSDictionary *customizationDictionary = @{kCustomizationHideTranscript:@YES,
+                                          kCustomizationHideTranslator:@YES,
+                                                kCustomizationLanguage:kCustomLanguageChinese,
+                                               kCustomizationLogoImage:[UIImage imageNamed:@"MyCompanyLogo"],
+                                   kCustomizationUseFabricJSWhiteboard:@YES,
+                                      kCustomizationUseAttendeeIdForWB:@YES,
+                                  kCustomizationHideInviteUsersByEmail:@YES,
+                                    kCustomizationHideParticipantsIcon:@YES};
+
+Customization keys:
+kCustomizationHideTranscript - BOOL - show/hide meeting transcript;
+kCustomizationHideTranslator - BOOL - enable/disable meeting translator;
+kCustomizationHideTranslator - NSString - default meeting room UI language (English / Chinese / etc);
+kCustomizationLogoImage - UIImage - custom UIImage for logo inside the meeting room;
+kCustomizationUseFabricJSWhiteboard - BOOL - use native or Farbic.js whiteboard;
+kCustomizationUseAttendeeIdForWB - BOOL - whiteboard control flag;
+kCustomizationHideInviteUsersByEmail - BOOL - enable/disable UI for inviting participants to the meeting;
+kCustomizationHideParticipantsIcon - BOOL - enable/disable participants management.
